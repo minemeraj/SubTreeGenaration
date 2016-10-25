@@ -52,17 +52,17 @@ class Node:
     def __repr__(self):
         return str(self)
 
-tree = Node("publication",
+tree = Node("A",
 [
-    Node("ID"),
-    Node("Airticle",
+    Node("B"),
+    Node("C",
     [
-        Node("title"),
+        Node("D"),
     ]),
-    Node("venue",
+    Node("E",
          [
-             Node("Name"),
-             Node("year")
+             Node("F"),
+             Node("G")
              ])
 ])
 
