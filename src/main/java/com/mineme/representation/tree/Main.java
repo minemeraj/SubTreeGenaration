@@ -1,56 +1,51 @@
 package com.mineme.representation.tree;
 
 public class Main {
-	public static final String rootParent = "root";
+	public static final String rootParent = "GrandFather";
 
 	public static void main(String[] args) {
-		Tree DBLPTree = createDBLPTree();
+		Tree DBLPTree = createSample();
 		DBLPTree.packNodes();
 		System.out.println(DBLPTree.getRootNode());
 	}
 
-	public static Tree createDBLPTree() {
+	public static Tree createSample() {
 		Tree tree = new Tree();
-		tree.setDataSourceName("DBLP");
 
-		Node root = createNode("", rootParent);
+		Node root = new Node("", rootParent);
 		tree.addNode(root);
 
-		Node id = createNode(rootParent, "id");
-		tree.addNode(id);
+		Node Father = new Node(rootParent, "Father");
+		tree.addNode(Father);
+		
+		Node Me = new Node(rootParent, "Me");
+		tree.addNode(Me);
 
-		Node article = createNode(rootParent, "article");
-		tree.addNode(article);
-		Node title = createNode("article", "title");
-		tree.addNode(title);
+		Node Uncle = new Node(rootParent, "Uncle");
+		tree.addNode(Uncle);
+		Node Cousine = new Node("Uncle", "Cousine");
+		tree.addNode(Cousine);
 
-		Node venue = createNode(rootParent, "venue");
-		tree.addNode(venue);
-		Node name = createNode("venue", "Name");
-		tree.addNode(name);
-		Node year = createNode("venue", "year");
-		tree.addNode(year);
+		Node Aunt = new Node(rootParent, "Aunt");
+		tree.addNode(Aunt);
+		Node fCousine = new Node("Aunt", "fCousine");
+		tree.addNode(fCousine);
+
 
 		tree.setRootNode(root);
 
-		tree.connectNode(root, id);
+		tree.connectNode(root, Father);
+		tree.connectNode(Father, Me);
 
-		tree.connectNode(root, article);
-		tree.connectNode(article, title);
+		tree.connectNode(root, Uncle);
+		tree.connectNode(Uncle, Cousine);
 
-		tree.connectNode(root, venue);
-		tree.connectNode(venue, name);
-		tree.connectNode(venue, year);
+		tree.connectNode(root, Aunt);
+		tree.connectNode(Aunt, fCousine);
 
 		tree.calcPosition();
 
 		return tree;
 	}
 
-	public static Node createNode(String parent, String name) {
-		Node node = new Node();
-		node.setParent(parent);
-		node.setName(name);
-		return node;
-	}
 }

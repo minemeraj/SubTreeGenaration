@@ -8,23 +8,20 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 
-public class Tree {
+import com.yeils.implementation.Generator;
+
+/**
+ * 
+ * @author Shahriar Robbani 11-SEP-2016
+ *
+ */
+public class Tree extends Generator<Node> {
 
 	private String id;
-	private String dataSourceName;
 	private Node rootNode;
 	private List<Node> nodes = new ArrayList<>();
 	private int[][] adjMatrix;// Edges will be represented as adjacency Matrix
 	private int size;
-
-	public String getDataSourceName() {
-		return dataSourceName;
-	}
-
-	public void setDataSourceName(String dataSourceName) {
-		this.dataSourceName = dataSourceName;
-	}
-
 
 	public void setRootNode(Node n) {
 		this.rootNode = n;
@@ -76,7 +73,8 @@ public class Tree {
 		Queue<Node> q = new LinkedList<>();
 		q.add(this.rootNode);
 		// printNode(this.rootNode);
-//		System.out.println(this.rootNode.getName() + ":" + this.rootNode.getPosition());
+		// System.out.println(this.rootNode.getName() + ":" +
+		// this.rootNode.getPosition());
 		rootNode.setVisited(true);
 
 		while (!q.isEmpty()) {
@@ -87,8 +85,9 @@ public class Tree {
 				child.setVisited(true);
 				child.setPosition(
 						nodes.get(getNodeIndex(child.getParent())).getPosition() + "." + new Integer(pos).toString());
-//				 printNode(child);
-//				System.out.println(child.getName() + ":" + child.getPosition());
+				// printNode(child);
+				// System.out.println(child.getName() + ":" +
+				// child.getPosition());
 				q.add(child);
 				pos++;
 			}
@@ -172,7 +171,7 @@ public class Tree {
 
 		return levels;
 	}
-	
+
 	public Node packNodes() {
 		Map<Integer, ArrayList<Node>> levels = this.getLevelsWithNodes();
 		for (int i = levels.size(); i > 1; i--) {
@@ -182,6 +181,12 @@ public class Tree {
 			}
 		}
 		return this.getRootNode();
+	}
+
+	@Override
+	protected void run() throws Exception {
+		
+		
 	}
 
 }

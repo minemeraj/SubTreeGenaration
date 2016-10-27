@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 
- * @author Aklima Zaman 11-SEP-2016
+ * @author Shahriar Robbani 11-SEP-2016
  *
  */
 public class Node implements Cloneable, Serializable {
@@ -26,6 +26,16 @@ public class Node implements Cloneable, Serializable {
 	private boolean visited;
 
 	public Node() {
+		init();
+	}
+
+	public Node(String parent, String name) {
+		init();
+		this.setParent(parent);
+		this.setName(name);
+	}
+
+	private void init() {
 		visited = false;
 		this.id = ++Node.next_id;
 	}
@@ -54,15 +64,9 @@ public class Node implements Cloneable, Serializable {
 		return level.length;
 	}
 
-
-
-
-
 	public int getActualNodeID() {
 		return actualNodeID;
 	}
-
-
 
 	public String getDataSourceAPI() {
 		return dataSourceAPI;
@@ -92,8 +96,6 @@ public class Node implements Cloneable, Serializable {
 		return typeId;
 	}
 
-
-
 	public boolean isVisited() {
 		return visited;
 	}
@@ -101,8 +103,6 @@ public class Node implements Cloneable, Serializable {
 	public void setActualNodeID(int actualNodeID) {
 		this.actualNodeID = actualNodeID;
 	}
-
-
 
 	public void setDataSourceAPI(String dataSourceAPI) {
 		this.dataSourceAPI = dataSourceAPI;
@@ -147,7 +147,7 @@ public class Node implements Cloneable, Serializable {
 		}
 
 		if (max_depth > 0) {
-			
+
 		}
 
 		return this;
