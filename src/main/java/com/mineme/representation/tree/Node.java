@@ -155,6 +155,13 @@ public class Node implements Cloneable, Serializable {
 
 	@Override
 	public String toString() {
-		return this.getName() + this.getChildNodes();
+		StringBuilder builder = new StringBuilder();
+		builder.append("Node(");
+		builder.append('"' + this.getName() + '"'+",");
+		if (!this.getChildNodes().isEmpty()) {
+			builder.append(this.getChildNodes());
+		}
+		builder.append(")");
+		return builder.toString();
 	}
 }

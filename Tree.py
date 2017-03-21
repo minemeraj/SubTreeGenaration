@@ -52,19 +52,8 @@ class Node:
     def __repr__(self):
         return str(self)
 
-tree = Node("A",
-[
-    Node("B"),
-    Node("C",
-    [
-        Node("D"),
-    ]),
-    Node("E",
-         [
-             Node("F"),
-             Node("G")
-             ])
-])
+tree = Node("GrandFather",[Node("Father",), Node("Me",), Node("Uncle",[Node("Cousine",)]), Node("Aunt",[Node("fCousine",)])])
+
 
 
 
